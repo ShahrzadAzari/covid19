@@ -2,6 +2,7 @@ image: mcr.microsoft.com/dotnet/core/sdk:latest
 
 stages:
     - build
+    - deploy
 
 build:
     stage: build
@@ -10,3 +11,14 @@ build:
     artifacts:
       paths:
         - BlazorApp.csproj
+
+pages:
+  stage: deploy
+  script:
+  - mkdir public
+  - cp -R * public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
