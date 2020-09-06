@@ -58,14 +58,14 @@
       },
       {
         "Kind": "Components.Component",
-        "Name": "BlazorApp.Pages.Counter",
+        "Name": "BlazorApp.Pages.Index",
         "AssemblyName": "BlazorApp",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Counter",
+            "TagName": "Index",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
@@ -77,19 +77,19 @@
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorApp.Pages.Counter"
+          "Common.TypeName": "BlazorApp.Pages.Index"
         }
       },
       {
         "Kind": "Components.Component",
-        "Name": "BlazorApp.Pages.Counter",
+        "Name": "BlazorApp.Pages.Index",
         "AssemblyName": "BlazorApp",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "BlazorApp.Pages.Counter",
+            "TagName": "BlazorApp.Pages.Index",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
@@ -101,7 +101,7 @@
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorApp.Pages.Counter",
+          "Common.TypeName": "BlazorApp.Pages.Index",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -156,14 +156,14 @@
       },
       {
         "Kind": "Components.Component",
-        "Name": "BlazorApp.Pages.Index",
+        "Name": "BlazorApp.Pages.Counter",
         "AssemblyName": "BlazorApp",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Index",
+            "TagName": "Counter",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
@@ -175,19 +175,19 @@
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorApp.Pages.Index"
+          "Common.TypeName": "BlazorApp.Pages.Counter"
         }
       },
       {
         "Kind": "Components.Component",
-        "Name": "BlazorApp.Pages.Index",
+        "Name": "BlazorApp.Pages.Counter",
         "AssemblyName": "BlazorApp",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "BlazorApp.Pages.Index",
+            "TagName": "BlazorApp.Pages.Counter",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
@@ -199,7 +199,7 @@
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BlazorApp.Pages.Index",
+          "Common.TypeName": "BlazorApp.Pages.Counter",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
