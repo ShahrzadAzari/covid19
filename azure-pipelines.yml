@@ -30,4 +30,4 @@ stages:
       displayName: Build csproj
       inputs:
         command: 'build'
-        projects: '**/ BlazorApp.csproj'
+        projects: './ BlazorApp.csproj'
