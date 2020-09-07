@@ -1,7 +1,51 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<div class="container" style="margin-top: 50px;">
 
-Welcome to your new app.
+    <div class="container" style="row-gap: 20px;">
+        @if(stats.TotalReport.Length > 0)
+        {
+            <h1>Covid-19 Statistic</h1>
+            <div class="row">
+                <div class="col-6">
+                    <p>Last Update: @stats.TotalReport[0].LastUpdate</p>
+                    <RadzenChart>
+                        <RadzenPieSeries Data="@stats.ChartDatas" Title="Cases" CategoryProperty="Title" ValueProperty="Number" />
+                    </RadzenChart>
+                </div>
+            </div>
+        }
+    </div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    <div class="container" style="row-gap: 20px; display: grid;">
+        @if(stats.NewsResponse != null)
+        {
+            <h1>Covid-19 Articles</h1>
+            foreach (var ar in stats.NewsResponse.Articles)
+            {
+                <div class="row" style=" border: 1px solid rgba(0, 0, 0, 0.8); padding: 20px;">
+                    <div class="col">
+                        <a href="@ar.Url" target="_blank"><b>@ar.Title</b></a>
+                        @if(ar.Description != null)
+                        {
+                            <p>@ar.Description</p>
+                        }
+                    </div>
+                    <div class="col-4">
+                        <img src="@ar.UrlToImage" style="width: inherit; height: inherit;">
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@code{
+    private Stats stats;
+    protected async override Task OnInitializedAsync()
+    {
+        this.stats = new Stats();
+        Task[] tasks = {stats.GetStatistics() , stats.GetArticles()};
+        await Task.WhenAll(tasks);
+    }
+}

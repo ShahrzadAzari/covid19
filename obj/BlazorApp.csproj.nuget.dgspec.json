@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\app\\BlazorApp\\BlazorApp.csproj": {}
+    "C:\\app\\BlazorApp\\BlazorApp.csproj": {}
   },
   "projects": {
-    "c:\\app\\BlazorApp\\BlazorApp.csproj": {
+    "C:\\app\\BlazorApp\\BlazorApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\app\\BlazorApp\\BlazorApp.csproj",
+        "projectUniqueName": "C:\\app\\BlazorApp\\BlazorApp.csproj",
         "projectName": "BlazorApp",
-        "projectPath": "c:\\app\\BlazorApp\\BlazorApp.csproj",
+        "projectPath": "C:\\app\\BlazorApp\\BlazorApp.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "c:\\app\\BlazorApp\\obj\\",
+        "outputPath": "C:\\app\\BlazorApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -49,6 +49,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.2.1, )"
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[2.11.18, )"
             },
             "System.Net.Http.Json": {
               "target": "Package",
