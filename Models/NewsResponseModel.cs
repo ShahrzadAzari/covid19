@@ -1,3 +1,4 @@
+
 namespace BlazorApp.Models
 {
     public class NewsResponseModel
