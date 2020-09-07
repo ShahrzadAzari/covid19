@@ -18,7 +18,6 @@ pages:
   - mkdir .public
   - cp -r * .public
   - mv .public public
-  - dotnet run
 
   artifacts:
     paths:
