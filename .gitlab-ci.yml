@@ -22,6 +22,6 @@ pages:
 
   artifacts:
     paths:
-    - public/BlazorApp.csproj
+    - public
   only:
   - master
