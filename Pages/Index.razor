@@ -22,45 +22,47 @@
             </div>
         </div>
     }
-
-
-    <div class="container" style="margin-bottom: 50px;">
-        @if(stats.TotalReport.Length > 0)
-        {
-            <h1 style="text-align: center; color: white; margin-bottom: 20px">Covid-19 Statistic</h1>
-            <div class="row" style="background-color: aliceblue;">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <RadzenChart>
-                        <RadzenPieSeries Data="@stats.ChartDatas" Title="Cases" CategoryProperty="Title" ValueProperty="Number" />
-                    </RadzenChart>
-                    <p style="text-align: end;">Last Update: @stats.TotalReport[0].LastUpdate</p>
-                </div>  
-            </div>
-        }
-    </div>
-
-    <div class="container" style="row-gap: 20px; display: grid; ">
-        @if(stats.AllArticles.Count > 0)
-        {
-            <h1 style="text-align: center; color:white">Covid-19 Articles</h1>
-            foreach (var ar in stats.AllArticles)
+    else
+    {
+        <div class="container" style="margin-bottom: 50px;">
+            @if(stats.TotalReport.Length > 0)
             {
-                <div class="row" style=" border: 1px solid rgba(0, 0, 0, 0.8); padding: 20px; background-color: aliceblue;">
-                    <div class="col">
-                        <a href="@ar.Url" target="_blank"><b>@ar.Title</b></a>
-                        @if(ar.Description != null)
-                        {
-                            <p>@ar.Description</p>
-                        }
-                    </div>
-                    <div class="col-4">
-                        <img src="@ar.UrlToImage" style="width: inherit; height: inherit;">
-                    </div>
+                <h1 style="text-align: center; color: white; margin-bottom: 20px">Covid-19 Statistic</h1>
+                <div class="row" style="background-color: aliceblue;">
+                    <div class="col-3"></div>
+                    <div class="col-6">
+                        <RadzenChart>
+                            <RadzenPieSeries Data="@stats.ChartDatas" Title="Cases" CategoryProperty="Title" ValueProperty="Number" />
+                        </RadzenChart>
+                        <p style="text-align: end;">Last Update: @stats.TotalReport[0].LastUpdate</p>
+                    </div>  
                 </div>
             }
-        }
-    </div>
+        </div>
+
+        <div class="container" style="row-gap: 20px; display: grid; ">
+            @if(stats.AllArticles.Count > 0)
+            {
+                <h1 style="text-align: center; color:white">Covid-19 Articles</h1>
+                foreach (var ar in stats.AllArticles)
+                {
+                    <div class="row" style=" border: 1px solid rgba(0, 0, 0, 0.8); padding: 20px; background-color: aliceblue;">
+                        <div class="col">
+                            <a href="@ar.Url" target="_blank"><b>@ar.Title</b></a>
+                            @if(ar.Description != null)
+                            {
+                                <p>@ar.Description</p>
+                            }
+                        </div>
+                        <div class="col-4">
+                            <img src="@ar.UrlToImage" style="width: inherit; height: inherit;">
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    }
+    
 </div>
 
 @code{
