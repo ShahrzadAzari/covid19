@@ -15,9 +15,12 @@ build:
 pages:
   stage: deploy
   script:
-  - mkdir .public
-  - cp -r * .public
-  - mv .public public
+  # - mkdir .public
+  # - cp -r * .public
+  # - mv .public public
+  - mkdir public
+  - dotnet publish -c Release -o output
+  - cp -a ./myapp/output/myapp/dist/* ./public
 
   artifacts:
     paths:
