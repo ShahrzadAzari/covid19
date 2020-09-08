@@ -40,7 +40,7 @@
             }
         </div>
 
-        <div class="container" style="margin-bottom: 50px;">
+        @* <div class="container" style="margin-bottom: 50px;">
             <h1 style="text-align: center; color: white; margin-bottom: 20px">Covid-19 Statistic</h1>
             <div class="row" style="background-color: aliceblue;">
                 <RadzenChart>
@@ -53,9 +53,6 @@
                     <RadzenLineSeries Smooth="true" Data="@chartM.AllRecoveredData" CategoryProperty="Date" Title="Recovered" ValueProperty="Revenue">
                         <RadzenMarkers MarkerType="MarkerType.Square" />
                     </RadzenLineSeries>
-                    <RadzenLineSeries Smooth="true" Data="@chartM.AllCritialData" CategoryProperty="Date" Title="Critical" ValueProperty="Revenue">
-                        <RadzenMarkers MarkerType="MarkerType.Circle" />
-                    </RadzenLineSeries>
                     <RadzenCategoryAxis Padding="20" FormatString="{0:MMM}" />
                     <RadzenValueAxis Formatter="@FormatAsUSD">
                         <RadzenGridLines Visible="true" />
@@ -63,7 +60,7 @@
                     </RadzenValueAxis>
                 </RadzenChart>
             </div>
-        </div>
+        </div> *@
 
 
         <div class="container" style="row-gap: 20px; display: grid; ">
@@ -101,13 +98,13 @@
         this.articleM = new ArticleM();
         this.chartM = new ChartM();
         tasks.Add(chartM.GetStatistics());
-        tasks.Add(chartM.GetCasesByDate());
+        //tasks.Add(chartM.GetCasesByDate());
         tasks.Add(articleM.GetArticles());
         await Task.WhenAll(tasks);
         loaded = true;
     }
-    private string FormatAsUSD(object value)
-    {
-        return ((double)value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
-    }
+    //private string FormatAsUSD(object value)
+    //{
+    //    return ((double)value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
+    //}
 }

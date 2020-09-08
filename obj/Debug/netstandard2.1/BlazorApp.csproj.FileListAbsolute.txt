@@ -379,6 +379,6 @@ C:\app\BlazorApp\obj\Debug\netstandard2.1\staticwebassets\BlazorApp.StaticWebAss
 C:\app\BlazorApp\obj\Debug\netstandard2.1\staticwebassets\BlazorApp.StaticWebAssets.xml
 C:\app\BlazorApp\obj\Debug\netstandard2.1\BlazorApp.dll
 C:\app\BlazorApp\obj\Debug\netstandard2.1\BlazorApp.pdb
-C:\app\BlazorApp\obj\Debug\netstandard2.1\integrity\Rkl4IUcZno0FYigCceFYmVi8dx32sqcNKtPCWep_ZSo=.hash
-C:\app\BlazorApp\obj\Debug\netstandard2.1\integrity\uHxh3gJDW8OfuGFJjDBlSCg8yFh-QTLX1uwmof5pkSw=.hash
-C:\app\BlazorApp\obj\Debug\netstandard2.1\integrity\JZdw_X9Pq3Xm3wi0Bu3ECTlBzegJnh0t7T2qZV2g_80=.hash
+C:\app\BlazorApp\obj\Debug\netstandard2.1\integrity\5hruKj-4HfygVQhoU2RXq5wRJ0hrtlEWSTXGg3ti2gs=.hash
+C:\app\BlazorApp\obj\Debug\netstandard2.1\integrity\8aonFo_z-btrsDhaNIlTBmgB5RZg2txfQnhPFesIKQE=.hash
+C:\app\BlazorApp\obj\Debug\netstandard2.1\integrity\KhZhTDra9acwraQqJrODqqolPXl_dWN65glLKkyfqAE=.hash
