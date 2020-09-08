@@ -14,7 +14,7 @@ namespace BlazorApp.Methods
         {
             _http = http;
         }
-        public NewsResponseModel NewsResponse {get;set;} = null;
+        public NewsResponseModel NewsResponse {get;set;}
         public List<ArticleModel> AllArticles {get;set;} = new List<ArticleModel>();
         public async Task GetArticles()
         {
