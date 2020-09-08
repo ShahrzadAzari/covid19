@@ -18,13 +18,13 @@ jobs:
 #         - name: Test
 #           run: dotnet test
 
-        # Generate the website
-        - name: Publish
-          run: dotnet publish BlazorApp.csproj --configuration Release
-
         # changes the base-tag in index.html from '/' to 'covid19' to match GitHub Pages repository subdirectory
         - name: Change base-tag in index.html from / to covid19
           run: sed -i 's/<base href="\/" \/>/<base href="\/covid19\/" \/>/g' wwwroot/index.html
+
+        # Generate the website
+        - name: Publish
+          run: dotnet publish BlazorApp.csproj --configuration Release
 
         # Publish the website
         - name: GitHub Pages action
