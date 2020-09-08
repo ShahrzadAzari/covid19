@@ -1,5 +1,5 @@
 ﻿@page "/"
-
+@using System.Globalization
 
 
 <div class="container" style="margin-top: 50px;">
@@ -25,26 +25,52 @@
     else
     {
         <div class="container" style="margin-bottom: 50px;">
-            @if(stats.TotalReport.Length > 0)
+            @if(chartM.TotalReport.Length > 0)
             {
                 <h1 style="text-align: center; color: white; margin-bottom: 20px">Covid-19 Statistic</h1>
                 <div class="row" style="background-color: aliceblue;">
                     <div class="col-3"></div>
                     <div class="col-6">
                         <RadzenChart>
-                            <RadzenPieSeries Data="@stats.ChartDatas" Title="Cases" CategoryProperty="Title" ValueProperty="Number" />
+                            <RadzenPieSeries Data="@chartM.ChartDatas" Title="Cases" CategoryProperty="Title" ValueProperty="Number" />
                         </RadzenChart>
-                        <p style="text-align: end;">Last Update: @stats.TotalReport[0].LastUpdate</p>
+                        <p style="text-align: end;">Last Update: @chartM.TotalReport[0].LastUpdate</p>
                     </div>  
                 </div>
             }
         </div>
 
+        <div class="container" style="margin-bottom: 50px;">
+            <h1 style="text-align: center; color: white; margin-bottom: 20px">Covid-19 Statistic</h1>
+            <div class="row" style="background-color: aliceblue;">
+                <RadzenChart>
+                    <RadzenLineSeries Smooth="true" Data="@chartM.AllDeathData" CategoryProperty="Date" Title="Death" ValueProperty="Revenue">
+                        <RadzenMarkers MarkerType="MarkerType.Square" />
+                    </RadzenLineSeries>
+                    <RadzenLineSeries Smooth="true" Data="@chartM.AllConfirmedData" CategoryProperty="Date" Title="Confirmed" ValueProperty="Revenue">
+                        <RadzenMarkers MarkerType="MarkerType.Circle" />
+                    </RadzenLineSeries>
+                    <RadzenLineSeries Smooth="true" Data="@chartM.AllRecoveredData" CategoryProperty="Date" Title="Recovered" ValueProperty="Revenue">
+                        <RadzenMarkers MarkerType="MarkerType.Square" />
+                    </RadzenLineSeries>
+                    <RadzenLineSeries Smooth="true" Data="@chartM.AllCritialData" CategoryProperty="Date" Title="Critical" ValueProperty="Revenue">
+                        <RadzenMarkers MarkerType="MarkerType.Circle" />
+                    </RadzenLineSeries>
+                    <RadzenCategoryAxis Padding="20" FormatString="{0:MMM}" />
+                    <RadzenValueAxis Formatter="@FormatAsUSD">
+                        <RadzenGridLines Visible="true" />
+                        <RadzenAxisTitle Text="cases" />
+                    </RadzenValueAxis>
+                </RadzenChart>
+            </div>
+        </div>
+
+
         <div class="container" style="row-gap: 20px; display: grid; ">
-            @if(stats.AllArticles.Count > 0)
+            @if(articleM.AllArticles.Count > 0)
             {
                 <h1 style="text-align: center; color:white">Covid-19 Articles</h1>
-                foreach (var ar in stats.AllArticles)
+                foreach (var ar in articleM.AllArticles)
                 {
                     <div class="row" style=" border: 1px solid rgba(0, 0, 0, 0.8); padding: 20px; background-color: aliceblue;">
                         <div class="col">
@@ -66,13 +92,22 @@
 </div>
 
 @code{
-    private Stats stats;
+    private ArticleM articleM;
+    private ChartM chartM;
+    private List<Task> tasks = new List<Task>();
     private Boolean loaded = false;
     protected async override Task OnInitializedAsync()
     {
-        this.stats = new Stats();
-        Task[] tasks = {stats.GetStatistics() , stats.GetArticles()};
+        this.articleM = new ArticleM();
+        this.chartM = new ChartM();
+        tasks.Add(chartM.GetStatistics());
+        tasks.Add(chartM.GetCasesByDate());
+        tasks.Add(articleM.GetArticles());
         await Task.WhenAll(tasks);
         loaded = true;
+    }
+    private string FormatAsUSD(object value)
+    {
+        return ((double)value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
     }
 }
