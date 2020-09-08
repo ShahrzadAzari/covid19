@@ -9,11 +9,13 @@ namespace BlazorApp.Methods
 {
     public class ArticleM
     {
-        public ArticleM(){}
+        private HttpClient _http;
+        public ArticleM(HttpClient http)
+        {
+            _http = http;
+        }
         public NewsResponseModel NewsResponse {get;set;} = null;
         public List<ArticleModel> AllArticles {get;set;} = new List<ArticleModel>();
-        public HttpClient Http = new HttpClient();
-
         public async Task GetArticles()
         {
             String date = DateTime.Today.ToString("yyyy-MM-dd");
@@ -27,7 +29,7 @@ namespace BlazorApp.Methods
                         Method = HttpMethod.Get,
                         RequestUri = new Uri(uri),
                     };
-                    response = await Http.SendAsync(httpRequest);
+                    response = await _http.SendAsync(httpRequest);
                 }
                 catch (Exception e)
                 {

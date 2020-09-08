@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using System.Globalization
+@inject HttpClient Http
 
 
 <div class="container" style="margin-top: 50px;">
@@ -95,16 +96,16 @@
     private Boolean loaded = false;
     protected async override Task OnInitializedAsync()
     {
-        this.articleM = new ArticleM();
-        this.chartM = new ChartM();
+        this.articleM = new ArticleM(Http);
+        this.chartM = new ChartM(Http);
         tasks.Add(chartM.GetStatistics());
         //tasks.Add(chartM.GetCasesByDate());
         tasks.Add(articleM.GetArticles());
         await Task.WhenAll(tasks);
         loaded = true;
     }
-    //private string FormatAsUSD(object value)
-    //{
-    //    return ((double)value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
-    //}
+    private string FormatAsUSD(object value)
+    {
+        return ((double)value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
+    }
 }

@@ -8,9 +8,12 @@ using BlazorApp.Models;
 namespace BlazorApp.Methods
 {
     public class ChartM
-    {   
-        public ChartM(){}
-        public HttpClient Http = new HttpClient();
+    {    
+        private HttpClient _http;
+        public ChartM(HttpClient http)
+        {
+            _http = http;
+        }
         public TotalReportModel[] TotalReport {get;set;} = {};
         public ChartDataModel[] ChartDatas {get;set;} = {};
         // public DayReportModel[] ThisDayReport {get;set;} = {};
@@ -34,7 +37,7 @@ namespace BlazorApp.Methods
                         {"x-rapidapi-key", "2b44e18130mshba82bfb1b3f5a93p1986b1jsnf5816d8a6dd8"},
                     }
                 };
-                response = await Http.SendAsync(httpRequest);
+                response = await _http.SendAsync(httpRequest);
             }
             catch (Exception e)
             {
@@ -69,7 +72,7 @@ namespace BlazorApp.Methods
         //                 Method = HttpMethod.Get,
         //                 RequestUri = new Uri(uri),
         //             };
-        //             response = await Http.SendAsync(httpRequest);
+        //             response = await _http.SendAsync(httpRequest);
         //         }
         //         catch (Exception e)
         //         {
