@@ -11,7 +11,7 @@ namespace BlazorApp.Models
         {
             this.Status = "";
             this.TotalResult = 0;
-            this.Articles = {};
+            this.Articles = new ArticleModel[]{};
         }
     }
 }
