@@ -7,6 +7,10 @@ namespace BlazorApp.Models
         public int TotalResult {get;set;}
         public ArticleModel[] Articles {get;set;}
         
-        public NewsResponseModel(){}
+        public NewsResponseModel()
+        {
+            this.Status = "";
+            this.TotalResult = 0;
+            this.Articles = {};
     }
 }
