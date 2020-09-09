@@ -12,5 +12,6 @@ namespace BlazorApp.Models
             this.Status = "";
             this.TotalResult = 0;
             this.Articles = {};
+        }
     }
 }
