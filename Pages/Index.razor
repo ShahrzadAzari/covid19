@@ -45,13 +45,13 @@
             <h1 style="text-align: center; color: white; margin-bottom: 20px">Covid-19 Statistic</h1>
             <div class="row" style="background-color: aliceblue;">
                 <RadzenChart>
-                    <RadzenLineSeries Smooth="true" Data="@chartM.AllDeathData" CategoryProperty="Date" Title="Death" ValueProperty="Revenue">
+                    <RadzenLineSeries Smooth="true" Data="@chartM.AllDeathData" CategoryProperty="Date" Title="Death" ValueProperty="Num">
                         <RadzenMarkers MarkerType="MarkerType.Square" />
                     </RadzenLineSeries>
-                    <RadzenLineSeries Smooth="true" Data="@chartM.AllConfirmedData" CategoryProperty="Date" Title="Confirmed" ValueProperty="Revenue">
+                    <RadzenLineSeries Smooth="true" Data="@chartM.AllConfirmedData" CategoryProperty="Date" Title="Confirmed" ValueProperty="Num">
                         <RadzenMarkers MarkerType="MarkerType.Circle" />
                     </RadzenLineSeries>
-                    <RadzenLineSeries Smooth="true" Data="@chartM.AllRecoveredData" CategoryProperty="Date" Title="Recovered" ValueProperty="Revenue">
+                    <RadzenLineSeries Smooth="true" Data="@chartM.AllRecoveredData" CategoryProperty="Date" Title="Recovered" ValueProperty="Num">
                         <RadzenMarkers MarkerType="MarkerType.Square" />
                     </RadzenLineSeries>
                     <RadzenCategoryAxis Padding="20" FormatString="{0:MMM}" />
