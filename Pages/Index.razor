@@ -101,7 +101,7 @@
         this.chartM = new ChartM(Http);
         tasks.Add(chartM.GetStatistics());
         //tasks.Add(chartM.GetCasesByDate());
-        //tasks.Add(articleM.GetArticles());
+        tasks.Add(articleM.GetArticles());
         await Task.WhenAll(tasks);
         loaded = true;
     }
