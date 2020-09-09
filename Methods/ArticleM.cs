@@ -20,7 +20,6 @@ namespace BlazorApp.Methods
         {
             String date = DateTime.Today.ToString("yyyy-MM-dd");
             do{
-                HttpResponseMessage response = null ;
                 try
                 {
                     var uri = @"https://newsapi.org/v2/everything?apiKey=4a892542050f40d6a39c3b76785e8240&domains=cnn.com&q=covid vaccine&sortBy=publishedAt&to="+date;
@@ -29,7 +28,7 @@ namespace BlazorApp.Methods
                         Method = HttpMethod.Get,
                         RequestUri = new Uri(uri),
                     };
-                    response = await _http.SendAsync(httpRequest);
+                    HttpResponseMessage response = await _http.SendAsync(httpRequest);
                 }
                 catch (Exception e)
                 {
