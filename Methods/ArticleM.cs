@@ -16,6 +16,7 @@ namespace BlazorApp.Methods
         }
         public NewsResponseModel NewsResponse {get;set;} = new NewsResponseModel();
         public List<ArticleModel> AllArticles {get;set;} = new List<ArticleModel>();
+        public ArticleModel[] AllTheArticles {get;set;} = {};
         public async Task GetArticles()
         {
             String date = DateTime.Today.ToString("yyyy-MM-dd");
@@ -50,6 +51,7 @@ namespace BlazorApp.Methods
                 }
 
             }while(this.NewsResponse.Articles.Length == 20);
+            AllTheArticles = AllArticles.ToArray();
         }
     
     }
