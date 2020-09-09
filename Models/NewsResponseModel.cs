@@ -6,5 +6,7 @@ namespace BlazorApp.Models
         public string Status {get;set;}
         public int TotalResult {get;set;}
         public ArticleModel[] Articles {get;set;}
+        
+        public NewsResponseModel(){}
     }
 }
