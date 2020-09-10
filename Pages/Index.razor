@@ -65,10 +65,10 @@
 
 
         <div class="container" style="row-gap: 20px; display: grid; ">
-            @if(articleM.AllTheArticles.Length > 0)
+            @if(articleM.AllArticles.Count > 0)
             {
                 <h1 style="text-align: center; color:white">Covid-19 Articles</h1>
-                foreach (var ar in articleM.AllTheArticles)
+                foreach (var ar in articleM.AllArticles)
                 {
                     <div class="row" style=" border: 1px solid rgba(0, 0, 0, 0.8); padding: 20px; background-color: aliceblue;">
                         <div class="col">
