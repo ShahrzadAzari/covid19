@@ -14,42 +14,33 @@ namespace BlazorApp.Methods
         {
             _http = http;
         }
-        public NewsResponseModel NewsResponse {get;set;} = new NewsResponseModel();
-        public List<ArticleModel> AllArticles {get;set;} = new List<ArticleModel>();
+        public ArticleResponseModel NewsResponse {get;set;} = new ArticleResponseModel();
+        public List<NewsModel> AllArticles {get;set;} = new List<NewsModel>();
         public async Task GetArticles()
         {
-            String date = DateTime.Today.ToString("yyyy-MM-dd");
-            do{
-                HttpResponseMessage response = null;
-                try
+            HttpResponseMessage response = null;
+            try
+            {
+                var uri = @"https://api.currentsapi.services/v1/search?keywords=covid vaccine&apiKey=A08cvp0C7ijWVyAH95_T4E-G9jJP_fbq-Ufa9qeyEJMVnowN";
+                var httpRequest = new HttpRequestMessage
                 {
-                    var uri = @"https://newsapi.org/v2/everything?apiKey=4a892542050f40d6a39c3b76785e8240&domains=cnn.com&q=covid vaccine&sortBy=publishedAt&to="+date;
-                    var httpRequest = new HttpRequestMessage
-                    {
-                        Method = HttpMethod.Get,
-                        RequestUri = new Uri(uri),
-                    };
-                    response = await _http.SendAsync(httpRequest);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                if(response != null)
-                {
-                    this.NewsResponse = await response.Content.ReadFromJsonAsync<NewsResponseModel>();
+                    Method = HttpMethod.Get,
+                    RequestUri = new Uri(uri),
+                };
+                response = await _http.SendAsync(httpRequest);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            if(response != null)
+            {
+                this.NewsResponse = await response.Content.ReadFromJsonAsync<ArticleResponseModel>();
 
-                    foreach(ArticleModel ar in this.NewsResponse.Articles)
-                        if(! AllArticles.Contains(ar))
-                            this.AllArticles.Add(ar);
-                    
-                    if(this.NewsResponse.Articles.Length > 0)
-                        date = this.NewsResponse.Articles[this.NewsResponse.Articles.Length -1].PublishedAt.ToString("yyyy-MM-dd");
-                    else
-                        break;
-                }
-
-            }while(this.NewsResponse.Articles.Length == 20);
+                foreach(NewsModel ar in this.NewsResponse.News)
+                    if(! AllArticles.Contains(ar))
+                        this.AllArticles.Add(ar);
+            }
         }
     
     }
