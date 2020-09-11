@@ -6,11 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>covid-19 Data</title>
     <base href="/" />
+
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/edition.css" rel="stylesheet" />
     <link href="_content/Radzen.Blazor/css/default-base.css" rel="stylesheet" >
+    <link href="map/svgMap.css" rel="stylesheet">
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
+
 
 <body>
     <app>Loading...</app>
@@ -22,6 +29,29 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+
+    <script src="map/svgMap.js"></script>
+    <script src="map/values.js"></script>
+    <script>
+        jQuery(document).ready(checkContainer);
+
+        function checkContainer () {
+            if($('#myMap').is(':visible')){ //if the container is visible on the page
+                MakeMap();
+            }
+            else {
+                setTimeout(checkContainer, 50); //wait 50 ms, then try again
+            }
+        };
+
+        function MakeMap(){
+            new svgMap({
+                targetElementID: 'myMap',
+                data: svgMapDataCovid
+            });
+        };
+    </script>
+
 </body>
 
 </html>

@@ -2,7 +2,6 @@
 @using System.Globalization
 @inject HttpClient Http
 
-
 <div class="container" style="margin-top: 50px;">
 
     @if(!loaded)
@@ -41,28 +40,10 @@
             }
         </div>
 
-        @* <div class="container" style="margin-bottom: 50px;">
-            <h1 style="text-align: center; color: white; margin-bottom: 20px">Covid-19 Statistic</h1>
-            <div class="row" style="background-color: aliceblue;">
-                <RadzenChart>
-                    <RadzenLineSeries Smooth="true" Data="@chartM.AllDeathData" CategoryProperty="Date" Title="Death" ValueProperty="Num">
-                        <RadzenMarkers MarkerType="MarkerType.Square" />
-                    </RadzenLineSeries>
-                    <RadzenLineSeries Smooth="true" Data="@chartM.AllConfirmedData" CategoryProperty="Date" Title="Confirmed" ValueProperty="Num">
-                        <RadzenMarkers MarkerType="MarkerType.Circle" />
-                    </RadzenLineSeries>
-                    <RadzenLineSeries Smooth="true" Data="@chartM.AllRecoveredData" CategoryProperty="Date" Title="Recovered" ValueProperty="Num">
-                        <RadzenMarkers MarkerType="MarkerType.Square" />
-                    </RadzenLineSeries>
-                    <RadzenCategoryAxis Padding="20" FormatString="{0:MMM}" />
-                    <RadzenValueAxis Formatter="@FormatAsUSD">
-                        <RadzenGridLines Visible="true" />
-                        <RadzenAxisTitle Text="cases" />
-                    </RadzenValueAxis>
-                </RadzenChart>
-            </div>
-        </div>  *@
-
+        <div class="container" style="margin-bottom: 50px;">
+            <h1 style="text-align: center; color: white; margin-bottom: 20px">Covid-19 World Map</h1>
+            <div id="myMap"></div>
+        </div>
 
         <div class="container" style="row-gap: 20px; display: grid; ">
             @if(articleM.AllArticles.Count > 0)
@@ -100,7 +81,6 @@
         this.articleM = new ArticleM(Http);
         this.chartM = new ChartM(Http);
         tasks.Add(chartM.GetStatistics());
-        //tasks.Add(chartM.GetCasesByDate());
         tasks.Add(articleM.GetArticles());
         await Task.WhenAll(tasks);
         loaded = true;
@@ -109,4 +89,5 @@
     {
         return ((double)value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
     }
+
 }
